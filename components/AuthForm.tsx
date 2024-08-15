@@ -6,26 +6,27 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
 import {
   Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+  // FormControl,
+  // FormDescription,
+  // FormField,
+  // FormItem,
+  // FormLabel,
+  // FormMessage,
 } from '@/components/ui/form'
 
 import CustomInput from '@/components/CustomInput'
 import { authFormSchema } from '@/lib/utils'
+import { signIn, signUp } from '@/lib/actions/user.actions'
 
 const AuthForm = ({ type }: AuthFormProps) => {
   const router = useRouter()
@@ -54,19 +55,19 @@ const AuthForm = ({ type }: AuthFormProps) => {
     try {
       // Sign up with Appwrite and create plain link token
       if (type === 'sign-up') {
-        // const newUser = await signUp(data)
-        // setUser(newUser)
+        const newUser = await signUp(data)
+        setUser(newUser)
       }
 
       if (type === 'sign-in') {
-        // const response = await signIn({
-        //   email: data.email,
-        //   password: data.password,
-        // })
-        //
-        // if (response) {
-        //   router.push('/')
-        // }
+        const response = await signIn({
+          email: data.email,
+          password: data.password,
+        })
+
+        if (response) {
+          router.push('/')
+        }
       }
     } catch (err) {
       console.log('error =>', err)
