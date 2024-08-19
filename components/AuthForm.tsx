@@ -110,7 +110,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
       </header>
       {user ? (
         <div className="flex flex-col gap-4">
-          {{/*plaid link*/ }}
+          {/*plaid link*/}
         </div>
       ) : (
         <>
@@ -134,7 +134,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
                   </div>
                   <CustomInput
                     control={form.control}
-                    name="address"
+                    name="address1"
                     placeholder="Enter your specific address"
                     label="Address"
                   />
