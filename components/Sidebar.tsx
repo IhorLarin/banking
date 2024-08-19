@@ -10,6 +10,9 @@ import Link from 'next/link'
 import { sidebarLinks } from '@/constants'
 import { cn } from '@/lib/utils'
 
+import Footer from '@/components/Footer'
+
+
 function Sidebar({ user }: SiderbarProps) {
   const pathname = usePathname()
 
@@ -21,7 +24,7 @@ function Sidebar({ user }: SiderbarProps) {
             src='/icons/logo.svg'
             width={34}
             height={34}
-            alt='Logo'
+            alt=' '
             className='size-[24px] max-xl:size-14 '
           />
           <h1 className='sidebar-logo'>Horizon</h1>
@@ -52,7 +55,7 @@ function Sidebar({ user }: SiderbarProps) {
         })}
         user
       </nav>
-      footer
+      <Footer user={user}/>
     </section>
   )
 }

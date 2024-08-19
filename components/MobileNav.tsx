@@ -16,6 +16,7 @@ import {
 import { sidebarLinks } from '@/constants'
 import { cn } from '@/lib/utils'
 
+import Footer from '@/components/Footer'
 
 function MobileNav({ user }: MobileNavProps) {
   const pathname = usePathname()
@@ -32,7 +33,13 @@ function MobileNav({ user }: MobileNavProps) {
             className='cursor-pointer '
           />
         </SheetTrigger>
-        <SheetContent side='left' className='bg-white border-none '>
+        <SheetContent side='left' className='bg-white border-none'>
+          {/* TODO: should be installed  VisuallyHidden component from Radix */}
+          {/*<SheetTitle>
+            <VisuallyHidden.Root>
+              Menu
+            </VisuallyHidden.Root>
+          </SheetTitle>*/}
           <Link href='/' className='cursor-pointer flex items-center gap-1 px-4'>
             <Image
               src='/icons/logo.svg'
@@ -73,7 +80,7 @@ function MobileNav({ user }: MobileNavProps) {
                 user
               </nav>
             </SheetClose>
-            footer
+            <Footer user={user} type='mobile'/>
           </div>
         </SheetContent>
       </Sheet>
