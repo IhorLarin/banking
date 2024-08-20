@@ -12,8 +12,10 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2 } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import CustomInput from '@/components/CustomInput'
+import PlaidLink from '@/components/PlaidLink'
 
+import { Button } from '@/components/ui/button'
 import {
   Form,
   // FormControl,
@@ -24,7 +26,6 @@ import {
   // FormMessage,
 } from '@/components/ui/form'
 
-import CustomInput from '@/components/CustomInput'
 import { authFormSchema } from '@/lib/utils'
 import { signIn, signUp } from '@/lib/actions/user.actions'
 
@@ -108,11 +109,14 @@ const AuthForm = ({ type }: AuthFormProps) => {
           </p>
         </div>
       </header>
-      {user ? (
+      {/*{user ? (*/}
         <div className="flex flex-col gap-4">
-          {/*plaid link*/}
+          <PlaidLink
+            user={user}
+            variant='primary'
+          />
         </div>
-      ) : (
+      {/*) : (*/}
         <>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -216,7 +220,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
             </Link>
           </footer>
         </>
-      )}
+      {/*)}*/}
     </section>
   )
 }
